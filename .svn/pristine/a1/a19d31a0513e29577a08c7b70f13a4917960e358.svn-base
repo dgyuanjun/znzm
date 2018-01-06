@@ -1,0 +1,26 @@
+package com.yuanjun.control;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.yuanjun.bean.Person;
+import com.yuanjun.service.PersonService;
+
+@Controller
+public class LoginControl {
+	@Autowired
+	private PersonService personService;
+	
+	@RequestMapping("/main")
+	public String test(){
+		
+		List<Person> list = personService.findAll();
+		for (Person person : list) {
+			System.out.println(person);
+		}
+		return "main";
+	}
+}
